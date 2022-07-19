@@ -7,7 +7,7 @@ class Bank:
         self.name = name
         self.balance = balance
         self.id = account_number
-        self.tran_log = ""
+        self.tran_log = []
         print("新規に口座が作成されました")
         print(f"お名前:{self.name}, ID:{Bank.account_number}")
         Bank.account_number += 1
@@ -46,7 +46,7 @@ class Bank:
         print(dt)
         print(f"口座ID:{self.id}, 取引:{tran}, 取引額:{tran_money}, 残高:{balance}")
 
-        self.tran_log = {"日時":dt, "口座ID":self.id, "取引":tran, "取引額":tran_money, "残高":balance}
+        self.tran_log.append({"日時":dt, "口座ID":self.id, "取引":tran, "取引額":tran_money, "残高":balance})
 
 
     def tran_check(self):
@@ -63,3 +63,5 @@ Toki = Bank("Toki", 99999, Bank.account_number)
 
 mune.withdraw()
 mune.tran_check()
+mune.deposit()
+print(mune.tran_log)
